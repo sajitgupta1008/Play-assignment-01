@@ -22,9 +22,9 @@ class HomeController extends Controller {
     Ok(views.html.index())
   }
 
-  def setSessionAction() = Action { request: Request[AnyContent] =>
+  def setSessionAction(name: String) = Action { request: Request[AnyContent] =>
 
-    Ok("<h1>Session created<h1>").as(HTML).withSession("user" -> "sajit gupta")
+    Ok("<h1>Session created<h1>").as(HTML).withSession("user" -> name)
   }
 
   def getSessionAction = Action { request: Request[AnyContent] =>
@@ -37,5 +37,7 @@ class HomeController extends Controller {
     }
   }
 
-  def flashData() = Action { request: Request[AnyContent] => Ok(request.flash.get("message").get).as(HTML) }
+  def flashData() = Action { request: Request[AnyContent] => Ok(request.flash.get("message").fold("No flash data")(x => x)).as(HTML) }
+
 }
+
