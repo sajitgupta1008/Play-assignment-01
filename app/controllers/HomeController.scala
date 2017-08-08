@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-import play.api._
+
 import play.api.mvc._
 
 /**
@@ -19,12 +19,12 @@ class HomeController extends Controller {
     * a path of `/`.
     */
   def index() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.index())
+    Ok("<h1>pass setsession/name in url to create session</h1>").as(HTML)
   }
 
   def setSessionAction(name: String) = Action { request: Request[AnyContent] =>
 
-    Ok("<h1>Session created<h1>").as(HTML).withSession("user" -> name)
+    Ok("<h1>Session created<h1><br/><h2>pass getsession in url to get session details</h2>").as(HTML).withSession("user" -> name)
   }
 
   def getSessionAction = Action { request: Request[AnyContent] =>
