@@ -1,7 +1,7 @@
 @(implicit flash:Flash)
 
 @main("") {
-<h1>Name of User : </h1>
+<h1>This is the display page. </h1>
 <h2>@flash.get("message").fold("No flash data")(x => x)</h2>
 }
 

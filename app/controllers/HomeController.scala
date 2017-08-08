@@ -37,7 +37,7 @@ class HomeController extends Controller {
     }
   }
 
-  def flashData() = Action { request: Request[AnyContent] => Ok(request.flash.get("message").fold("No flash data")(x => x)).as(HTML) }
+  def flashData() = Action { request: Request[AnyContent] => Ok(views.html.show(request.flash)) }
 
 }
 
